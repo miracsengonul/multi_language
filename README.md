@@ -13,7 +13,7 @@ Bu sınıf projenize çoklu dil ekleyebileceğiniz bir PHP kütüphanesidir.
 
 Projenizin olduğu dizinde aşağıda bulunan kodu çalıştırınız.
 
-> composer require miracsengonul/multi_language dev-master
+> composer require mirac/multilanguage dev-master
 
 
 Daha sonra, sayfanızda herhangi bir Composer autoload komutu yok ise sayfanınızın başına şu komutu ekleyiniz.
