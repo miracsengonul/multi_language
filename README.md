@@ -84,7 +84,6 @@ return[
     'iletisim' => 'İletişim',
     'sayfa' => 'Sayfa',
     'fotograf' => 'Fotoğraf'
-  /** Ne kullanmanız gerekiyorsa key halinde sınırsız tutabilirsiniz.
   ];
 
   ```
@@ -139,8 +138,7 @@ return[
   echo "Menüler ".
   $lang->lang('anasayfa.baslik')."<br>".
   $lang->lang('anasayfa.fotograf')."<br>".
-  $lang->lang('anasayfa.iletisim')."<br>"
-  ."
+  $lang->lang('anasayfa.iletisim')."<br>";
   ```
 
   Örneğinde olduğu gibi kodlarınızın içerisinde yukarıdaki gibi kullanabilirsiniz.
