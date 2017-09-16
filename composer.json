@@ -1,0 +1,21 @@
+{
+    "name": "Mirac/MultiLanguage",
+    "description": "PHP Multi Language Library",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Miraç Şengönül",
+            "email": "miracsengonul@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+    "psr-4": {
+      "Mirac\\MultiLanguage\\": "src"
+    }
+  }	
+}
