@@ -68,8 +68,12 @@ Dizinimizde oluşan <b>lang</b> klasörü içine ülke kodu ile klasör açarak 
 Türkçe için <b>tr</b> adında bir klasör açıyoruz.
 Daha sonra içine çeviri dosyalarımızı ekliyoruz.
 
-Türkçe için çeviri dosyası 'anasayfa' adında bir dosya oluşturalım.
+Siz istediğiniz dil için klasör ve çeviri dosyası ekleyebilirsiniz.
 
+Türkçe için çeviri dosyası 'anasayfa' adında bir dosya oluşturalım.Sitenizin büyüklüğüne göre dosyalarınızı çoğaltabilirsiniz.
+Fakat aynı dosyaların çevirisini yapmayı unutmayın !
+
+Anasayfamızın çevirilerinin bulunduğu dosyamızı ilk olarak 'tr' klasörü içinde anasayfa.php şeklinde oluşturalım.
 > lang/tr/anasayfa.php
 
 ```php
@@ -114,7 +118,7 @@ return[
 
   ```
 
-  Bunun gibi sınırsız dil ekleyebilirsiniz.
+  Bunun gibi sınırsız dil ve dosya ekleyebilirsiniz.
 
   <a href="#ozel-input"></a>
   ### Sayfada Kullanma
@@ -127,7 +131,7 @@ return[
 
   > $lang->lang('anasayfa.fotograf');
 
-  Bu komut bize seçili olan dil klasörünün içinde bulunan anasayfa.php dosyasındaki 'fotograf' çevirisinin karşılığını verir.
+  Bu komut örneği, bize seçili olan dil klasörünün içinde bulunan anasayfa.php dosyasındaki 'fotograf' çevirisinin karşılığını verir.
 
   ```php
   <?php
@@ -139,19 +143,21 @@ return[
   ."
   ```
 
-  Şeklinde kodlarınızın içerisinde kullanabilirsiniz.
+  Örneğinde olduğu gibi kodlarınızın içerisinde yukarıdaki gibi kullanabilirsiniz.
 
 
   ### Ziyaretçinin Dil Seçmesi
 
 
-  Ziyaretçilerinize dil seçimi sunmak istiyorsanız şu komut ile entegrasyon yapabilirsiniz.
+  Ziyaretçilerinizin dil seçmesi için şu komut ile sayfanıza entegrasyon yapabilirsiniz.
 
   > $select->language('tr')
 
   > $select->language('en')
 
   > $select->language('de')
+  
+  > $select->language('..')
 
   Örnek:
   ```php
@@ -160,7 +166,7 @@ return[
   echo "<a href='".$select->language('de')."'>DE</a><br>";
   ```
 
-  Bu şekilde link verdiğiniz takdirde otomatik olarak eklemiş olduğunuz dil dosyası aktif olacaktır.
+  Bu şekilde link verdiğiniz takdirde ziyaretçi tıklayınca otomatik olarak eklemiş olduğunuz dil dosyası aktif olacaktır.
 
   > Bu dil isimleri lang klasöründe oluşturduğumuz dil dosyaları ile bağlantılıdır.
 
