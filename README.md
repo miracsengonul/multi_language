@@ -23,27 +23,27 @@ require_once __DIR__ . '/vendor/autoload.php';
 ```
 Bu satırımızın altından devam edelim. Öncelikle proje dizinimizde ```lang``` klasörü oluşturacağımız için şu komutları ekleyin.
 ```php
-use mirac\multilanguage\Create;
+use Mirac\MultiLanguage\Create;
 Create::folder();
 ```
 Bu satırları eklemiş olduğunuz sayfaya tarayıcınızdan giriş yapın.Ve dizininizde 'lang' adı altında bir klasör oluştuğunu göreceksiniz.
 
 > İleride tüm dil dosyalarını bu klasörün içine ekleyeceğiz.
 
-Klasörün oluştuğunu gördükten sonra az önce eklediğimiz şu iki satırı silelim çünkü işimiz kalmadı. 
+Klasörün oluştuğunu gördükten sonra az önce eklediğimiz şu iki satırı silelim çünkü işimiz kalmadı.
 
 ```php
 /*
-  use mirac\multilanguage\Create;
-  Create::folder();
+use Mirac\MultiLanguage\Create;
+Create::folder();
 */
 ```
 
 Onun yerine şu satırları ekleyelim.
 
 ```php
-use mirac\multilanguage\Language;
-use mirac\multilanguage\Select;
+use Mirac\MultiLanguage\Language;
+use Mirac\MultiLanguage\Select;
 
 $lang = new Language();
 $select  = new Select();
@@ -76,91 +76,91 @@ Türkçe için çeviri dosyası 'anasayfa' adında bir dosya oluşturalım.
 <?php
 
 return[
-  'baslik' => 'Anasayfa',
-  'iletisim' => 'İletişim',
-  'sayfa' => 'Sayfa',
-  'fotograf' => 'Fotoğraf'
+    'baslik' => 'Anasayfa',
+    'iletisim' => 'İletişim',
+    'sayfa' => 'Sayfa',
+    'fotograf' => 'Fotoğraf'
   /** Ne kullanmanız gerekiyorsa key halinde sınırsız tutabilirsiniz.
-];
+  ];
 
-```
-Bu çeviri dosyasını istediğiniz dile çevirebilirsiniz.
+  ```
+  Bu çeviri dosyasını istediğiniz dile çevirebilirsiniz.
 
-> lang/en/anasayfa.php
+  > lang/en/anasayfa.php
 
-```php
-<?php
+  ```php
+  <?php
 
-return[
+  return[
   'baslik' => 'Homepage',
   'iletisim' => 'Contact',
   'sayfa' => 'Page',
   'fotograf' => 'Photo'
-];
+  ];
 
-```
+  ```
 
-> lang/de/anasayfa.php
+  > lang/de/anasayfa.php
 
-```php
-<?php
+  ```php
+  <?php
 
-return[
+  return[
   'baslik' => 'Homepage',
   'iletisim' => 'Kontakt',
   'sayfa' => 'Seite',
   'fotograf' => 'Foto'
-];
+  ];
 
-```
+  ```
 
-Bunun gibi sınırsız dil ekleyebilirsiniz.
+  Bunun gibi sınırsız dil ekleyebilirsiniz.
 
-<a href="#ozel-input"></a>
-### Sayfada Kullanma
+  <a href="#ozel-input"></a>
+  ### Sayfada Kullanma
 
-Dosyaları oluşturduktan sonra bunları sayfalarımızda kullanmak için şu komutu kullanıyoruz.
+  Dosyaları oluşturduktan sonra bunları sayfalarımızda kullanmak için şu komutu kullanıyoruz.
 
-> $lang->lang('dosyaismi.ceviriadi');
+  > $lang->lang('dosyaismi.ceviriadi');
 
-Örneğin:
+  Örneğin:
 
-> $lang->lang('anasayfa.fotograf');
+  > $lang->lang('anasayfa.fotograf');
 
-Bu komut bize seçili olan dil klasörünün içinde bulunan anasayfa.php dosyasındaki 'fotograf' çevirisinin karşılığını verir.
+  Bu komut bize seçili olan dil klasörünün içinde bulunan anasayfa.php dosyasındaki 'fotograf' çevirisinin karşılığını verir.
 
-```php
-<?php
+  ```php
+  <?php
 
-echo "Menüler ".
-     $lang->lang('anasayfa.baslik')."<br>".
-     $lang->lang('anasayfa.fotograf')."<br>".
-     $lang->lang('anasayfa.iletisim')."<br>"
-     ."
-```
+  echo "Menüler ".
+  $lang->lang('anasayfa.baslik')."<br>".
+  $lang->lang('anasayfa.fotograf')."<br>".
+  $lang->lang('anasayfa.iletisim')."<br>"
+  ."
+  ```
 
-Şeklinde kodlarınızın içerisinde kullanabilirsiniz.
-
-
-### Ziyaretçinin Dil Seçmesi
+  Şeklinde kodlarınızın içerisinde kullanabilirsiniz.
 
 
-Ziyaretçilerinize dil seçimi sunmak istiyorsanız şu komut ile entegrasyon yapabilirsiniz.
+  ### Ziyaretçinin Dil Seçmesi
 
-> $select->language('tr')
 
-> $select->language('en')
+  Ziyaretçilerinize dil seçimi sunmak istiyorsanız şu komut ile entegrasyon yapabilirsiniz.
 
-> $select->language('de')
+  > $select->language('tr')
 
-Örnek:
-```php
-echo "<a href='".$select->language('tr')."'>TR</a><br>";
-echo "<a href='".$select->language('en')."'>EN</a><br>";
-echo "<a href='".$select->language('de')."'>DE</a><br>";
-```
+  > $select->language('en')
 
-Bu şekilde link verdiğiniz takdirde otomatik olarak eklemiş olduğunuz dil dosyası aktif olacaktır.
+  > $select->language('de')
 
-> Bu dil isimleri lang klasöründe oluşturduğumuz dil dosyaları ile bağlantılıdır.
+  Örnek:
+  ```php
+  echo "<a href='".$select->language('tr')."'>TR</a><br>";
+  echo "<a href='".$select->language('en')."'>EN</a><br>";
+  echo "<a href='".$select->language('de')."'>DE</a><br>";
+  ```
+
+  Bu şekilde link verdiğiniz takdirde otomatik olarak eklemiş olduğunuz dil dosyası aktif olacaktır.
+
+  > Bu dil isimleri lang klasöründe oluşturduğumuz dil dosyaları ile bağlantılıdır.
 
