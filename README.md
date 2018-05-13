@@ -70,7 +70,7 @@ Daha sonra içine çeviri dosyalarımızı ekliyoruz.
 
 Siz istediğiniz dil için klasör ve çeviri dosyası ekleyebilirsiniz.
 
-Türkçe için çeviri dosyası 'anasayfa' adında bir dosya oluşturalım.Sitenizin büyüklüğüne göre dosyalarınızı çoğaltabilirsiniz.
+Türkçe için dil dosyası olarak 'anasayfa' adında bir dosya oluşturalım.Sitenizin büyüklüğüne göre dosyalarınızı çoğaltabilirsiniz.
 Fakat aynı dosyaların çevirisini yapmayı unutmayın !
 
 Anasayfamızın çevirilerinin bulunduğu dosyamızı ilk olarak 'tr' klasörü içinde anasayfa.php şeklinde oluşturalım.
@@ -124,7 +124,7 @@ return[
 
   Dosyaları oluşturduktan sonra bunları sayfalarımızda kullanmak için şu komutu kullanıyoruz.
 
-  > $lang->lang('dosyaismi.ceviriadi');
+  > $lang->lang('dosyaismi.key');
 
   Örneğin:
 
