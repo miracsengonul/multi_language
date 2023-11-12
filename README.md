@@ -1,36 +1,34 @@
 #PHP Multi Language Library
 ========
 
-Bu sınıf projenize çoklu dil ekleyebileceğiniz bir PHP kütüphanesidir.
+This class is a PHP library that allows you to add multi-language support to your project.
 
-- [Kurulum](#kurulum)
-- [Basit Kullanımı](#kullanımı)
-- [Örnek](#ornek)
+- [Installation](#installation)
+- [Simple Usage](#usage)
+- [Example](#example)
 
 
-<a href="#kurulum"></a>
-## Kurulum
+<a href="#installation"></a>
+## Installation
 
-Projenizin olduğu dizinde aşağıda bulunan kodu çalıştırınız.
+Run the following code in the directory of your project.
 
 > composer require mirac/multilanguage dev-master
 
-
-Daha sonra, sayfanızda herhangi bir Composer autoload komutu yok ise sayfanınızın başına şu komutu ekleyiniz.
-
+If there is no Composer autoload command on your page, add the following command at the beginning of your page.
 ```php
 require_once __DIR__ . '/vendor/autoload.php';
 ```
-Bu satırımızın altından devam edelim. Öncelikle proje dizinimizde ```lang``` klasörü oluşturacağımız için şu komutları ekleyin.
+Let's continue below this line. Since we will create a 'lang' folder in the project directory, add the following commands.
 ```php
 use Mirac\MultiLanguage\Create;
 Create::folder();
 ```
-Bu satırları eklemiş olduğunuz sayfaya tarayıcınızdan giriş yapın.Ve dizininizde 'lang' adı altında bir klasör oluştuğunu göreceksiniz.
+After adding these lines to your page, access it through your browser. You will see a folder named 'lang' created in your directory.
 
-> İleride tüm dil dosyalarını bu klasörün içine ekleyeceğiz.
+> We will add all language files to this folder later.
 
-Klasörün oluştuğunu gördükten sonra az önce eklediğimiz şu iki satırı silelim çünkü işimiz kalmadı.
+After seeing that the folder has been created, let's delete the two lines we added earlier because our job is done.
 
 ```php
 /*
@@ -39,7 +37,7 @@ Create::folder();
 */
 ```
 
-Onun yerine şu satırları ekleyelim.
+Instead, let's add the following lines.
 
 ```php
 use Mirac\MultiLanguage\Language;
@@ -48,106 +46,102 @@ use Mirac\MultiLanguage\Select;
 $lang = new Language();
 $select  = new Select();
 ```
-Tüm yapılandırma bu kadar.Bundan sonra dil eklemesi yapabiliriz.
+That's all for configuration. Now we can add languages.
 
-<a href="#kullanımı"></a>
-## Kullanımı
+<a href="#usage"></a>
+## Usage
 
-- [Dil Dosyası Ekleme](#lang-klasörü-İçine-dil-dosyası-ekleme)
-- [Sayfada Kullanma](#sayfada-kullanma)
-- [Ziyaretçinin Dil Seçmesi](#ziyaretçinin-dil-seçmesi)
-
+- [Adding Language Files](#lang-klasörü-İçine-dil-dosyası-ekleme)
+- [Using on the Page](#sayfada-kullanma)
+- [Visitor Language Selection](#ziyaretçinin-dil-seçmesi)
 
 <a href="#dosya-ekle"></a>
-### 'lang' Klasörü İçine Dil Dosyası Ekleme
+### Adding Language Files to the 'lang' Folder
 
-Dizinimizde oluşan <b>lang</b> klasörü içine ülke kodu ile klasör açarak çeviri yapacağımız dosyaları oluşturmamız gerekiyor.
+To translate files, we need to create folders with country codes inside the created 'lang' folder in our directory.
 
-Örn:
+Example:
 
-Türkçe için <b>tr</b> adında bir klasör açıyoruz.
-Daha sonra içine çeviri dosyalarımızı ekliyoruz.
+For Turkish, we create a folder named 'tr'. Then we add our translation files to it.
 
-Siz istediğiniz dil için klasör ve çeviri dosyası ekleyebilirsiniz.
+You can add a folder and translation file for any language you want.
 
-Türkçe için dil dosyası olarak 'anasayfa' adında bir dosya oluşturalım.Sitenizin büyüklüğüne göre dosyalarınızı çoğaltabilirsiniz.
-Fakat aynı dosyaların çevirisini yapmayı unutmayın !
+Let's create a language file named 'homepage' for Turkish. Depending on the size of your site, you can duplicate your files. But don't forget to translate the same files!
 
-Anasayfamızın çevirilerinin bulunduğu dosyamızı ilk olarak 'tr' klasörü içinde anasayfa.php şeklinde oluşturalım.
-> lang/tr/anasayfa.php
+Let's create our file containing the translations of our homepage in the 'tr' folder as 'homepage.php'.
+> lang/tr/homepage.php
 
 ```php
 <?php
 
-return[
-    'baslik' => 'Anasayfa',
-    'iletisim' => 'İletişim',
-    'sayfa' => 'Sayfa',
-    'fotograf' => 'Fotoğraf'
-  ];
+return [
+    'title' => 'Homepage',
+    'contact' => 'Contact',
+    'page' => 'Page',
+    'photo' => 'Photo'
+];
 
   ```
   Bu çeviri dosyasını istediğiniz dile çevirebilirsiniz.
 
-  > lang/en/anasayfa.php
+  > lang/en/homepage.php
 
   ```php
-  <?php
+<?php
 
-  return[
-  'baslik' => 'Homepage',
-  'iletisim' => 'Contact',
-  'sayfa' => 'Page',
-  'fotograf' => 'Photo'
-  ];
+return [
+    'title' => 'Homepage',
+    'contact' => 'Contact',
+    'page' => 'Page',
+    'photo' => 'Photo'
+];
 
   ```
 
-  > lang/de/anasayfa.php
+  > lang/de/homepage.php
 
   ```php
-  <?php
+<?php
 
-  return[
-  'baslik' => 'Homepage',
-  'iletisim' => 'Kontakt',
-  'sayfa' => 'Seite',
-  'fotograf' => 'Foto'
-  ];
+return [
+    'title' => 'Homepage',
+    'contact' => 'Contact',
+    'page' => 'Page',
+    'photo' => 'Photo'
+];
 
   ```
 
-  Bunun gibi sınırsız dil ve dosya ekleyebilirsiniz.
+You can add unlimited languages and files like this.
 
   <a href="#ozel-input"></a>
-  ### Sayfada Kullanma
+  ### Using on the Page
 
-  Dosyaları oluşturduktan sonra bunları sayfalarımızda kullanmak için şu komutu kullanıyoruz.
+  After creating the files, we use the following command to use them on our pages.
 
-  > $lang->lang('dosyaismi.key');
+  > $lang->lang('filename.key');
 
-  Örneğin:
+  For Example:
 
-  > $lang->lang('anasayfa.fotograf');
+  > $lang->lang('homepage.photo');
 
-  Bu komut örneği, bize seçili olan dil klasörünün içinde bulunan anasayfa.php dosyasındaki 'fotograf' çevirisinin karşılığını verir.
+  This example command will give us the translation of the 'photo' key in the 'homepage.php' file inside the selected language folder.
 
   ```php
   <?php
 
-  echo "Menüler ".
-  $lang->lang('anasayfa.baslik')."<br>".
-  $lang->lang('anasayfa.fotograf')."<br>".
-  $lang->lang('anasayfa.iletisim')."<br>";
+  echo "Menus ".
+  $lang->lang('homepage.title')."<br>".
+  $lang->lang('homepage.photo')."<br>".
+  $lang->lang('homepage.contact')."<br>";
   ```
 
-  Örneğinde olduğu gibi kodlarınızın içerisinde yukarıdaki gibi kullanabilirsiniz.
+You can use it in your code as shown in the example above.
+
+  ### Visitor Language Selection
 
 
-  ### Ziyaretçinin Dil Seçmesi
-
-
-  Ziyaretçilerinizin dil seçmesi için şu komut ile sayfanıza entegrasyon yapabilirsiniz.
+  To allow your visitors to choose a language, you can integrate the following command into your page.
 
   > $select->language('tr')
 
@@ -157,14 +151,14 @@ return[
   
   > $select->language('..')
 
-  Örnek:
+  Example:
   ```php
   echo "<a href='".$select->language('tr')."'>TR</a><br>";
   echo "<a href='".$select->language('en')."'>EN</a><br>";
   echo "<a href='".$select->language('de')."'>DE</a><br>";
   ```
 
-  Bu şekilde link verdiğiniz takdirde ziyaretçi tıklayınca otomatik olarak eklemiş olduğunuz dil dosyası aktif olacaktır.
+  By providing links like this, when the visitor clicks, the language file you added will be activated automatically.
 
-  > Bu dil isimleri lang klasöründe oluşturduğumuz dil dosyaları ile bağlantılıdır.
+  > These language names are connected to the language files we created in the 'lang' folder.
 
