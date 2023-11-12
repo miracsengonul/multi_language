@@ -82,7 +82,7 @@ return [
 ];
 
   ```
-  Bu çeviri dosyasını istediğiniz dile çevirebilirsiniz.
+You can translate this file into any language you want.
 
   > lang/en/homepage.php
 
